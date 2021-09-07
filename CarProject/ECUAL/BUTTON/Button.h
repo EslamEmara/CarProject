@@ -17,7 +17,7 @@ typedef enum {
 	PULLDOWN_RES,
 }EN_CONN_t;
 
-void Button_init(uint8_t port,uint8_t pin);
-uint8_t Button_read(uint8_t port,uint8_t pin,EN_CONN_t conn);
+void Button_init(uint8 port,uint8 pin);
+uint8 Button_read(uint8 port,uint8 pin,EN_CONN_t conn);
 
 #endif /* BUTTON_H_ */

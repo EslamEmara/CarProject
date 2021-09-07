@@ -19,15 +19,15 @@
 #define		HIGH		1
 
 typedef struct motor {
-	uint8_t DIR_PORT;
-	uint8_t DIR_PIN;
-	uint8_t PWM_PORT;
-	uint8_t PWM_PIN;
+	uint8 DIR_PORT;
+	uint8 DIR_PIN;
+	uint8 PWM_PORT;
+	uint8 PWM_PIN;
 	}ST_MOTORconfig_t;
 
 void Motor_init(ST_MOTORconfig_t config);
-void Motor_moveForward(ST_MOTORconfig_t config,uint8_t speed);
-void Motor_moveBackwards(ST_MOTORconfig_t config,uint8_t speed);
+void Motor_moveForward(ST_MOTORconfig_t config,uint8 speed);
+void Motor_moveBackwards(ST_MOTORconfig_t config,uint8 speed);
 
 
 #endif /* MOTOR_H_ */
