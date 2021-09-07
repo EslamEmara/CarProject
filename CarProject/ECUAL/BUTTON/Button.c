@@ -16,7 +16,7 @@
 void Button_init(uint8 port,uint8 pin)
 {
 	if (pin <= 7)
-		DIO_SetPinDirection(port,pin,0);
+		DIO_SetPinDirection(port,pin,INPUT);
 }
 
 /*

@@ -10,8 +10,8 @@
 #define MOTOR_H_
 
 
-#include "DIO_Config.h"
-#include "pwm.h"
+#include "..\..\MCAL\DIO\DIO_Config.h"
+#include "..\..\MCAL\PWM\pwm.h"
 
 #define		PRESCALAR	1024
 
@@ -21,8 +21,7 @@
 typedef struct motor {
 	uint8 DIR_PORT;
 	uint8 DIR_PIN;
-	uint8 PWM_PORT;
-	uint8 PWM_PIN;
+	uint8 PWM_ID;
 	}ST_MOTORconfig_t;
 
 void Motor_init(ST_MOTORconfig_t config);

@@ -5,14 +5,15 @@
  *  Author: Farouk
  */ 
 
-#include "Std_Types.h"
-#include "Bit_Math.h"
+#include "..\MCAL\DIO\Std_Types.h"
+#include "..\MCAL\DIO\Bit_Math.h"
 
-#include "Button.h"
-#include "Motor.h"
+#include "..\ECUAL\BUTTON\Button.h"
+#include "..\ECUAL\Motor\Motor.h"
 
-ST_MOTORconfig_t MOTOR_1_config = {PORTA,0,PORTB,3};
-ST_MOTORconfig_t MOTOR_2_config = {PORTA,1,PORTD,7};
+
+ST_MOTORconfig_t MOTOR_1_config = {portA,0,PWM1};
+ST_MOTORconfig_t MOTOR_2_config = {portA,1,PWM2};
 
 void car_init(void)
 {
@@ -22,10 +23,10 @@ void car_init(void)
 	Motor_init(	MOTOR_2_config );
 	
 	/* init buttons */
-	Button_init(PORTC,0); // button 1 (forward)
-	Button_init(PORTC,1); // button 2 (backward)
-	Button_init(PORTC,2); // button 3 (right)
-	Button_init(PORTC,3); // button 4 (left)
+	Button_init(portC,0); // button 1 (forward)
+	Button_init(portC,1); // button 2 (backward)
+	Button_init(portC,2); // button 3 (right)
+	Button_init(portC,3); // button 4 (left)
 }
 
 
