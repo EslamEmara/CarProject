@@ -9,9 +9,20 @@
 #ifndef CAR_H_
 #define CAR_H_
 
-// motor config
-ST_MOTORconfig_t MOTOR_1_config = {PORTA,0,PORTB,3};
-ST_MOTORconfig_t MOTOR_2_config = {PORTA,1,PORTD,7};
+#include "..\MCAL\DIO\Std_Types.h"
+#include "..\MCAL\DIO\Bit_Math.h"
+
+#include "..\ECUAL\BUTTON\Button.h"
+#include "..\ECUAL\Motor\Motor.h"
+
+// button config
+
+#define BUTTON_G	portC,0
+#define BUTTON_M	portC,1
+#define BUTTON_L	portC,2
+#define BUTTON_R	portC,3
+
+
 
 /*******
 	Function Description: Init the 2 motors and the 4 button to be ready for work

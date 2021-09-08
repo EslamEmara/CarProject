@@ -17,6 +17,9 @@
 #define T2_OutCmp_REG			(*((volatile uint8*)0x43))
 #define T_INTMask_REG			(*((volatile uint8*)0x59))
 #define T_Status_REG			(*((volatile uint8*)0x58))
+#define PORTB_DIR				(*((volatile uint8*)0x37))
+#define PORTD_DIR				(*((volatile uint8*)0x31))
+
 
 #define NON_INVERTING_MODE 0
 #define INVERTING_MODE 1

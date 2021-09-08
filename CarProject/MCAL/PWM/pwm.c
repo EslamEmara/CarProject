@@ -12,6 +12,7 @@ prescalar	>> 0 , 8 , 64 , 256 , 1024
 
 void pwm_init (uint8 ID , uint8 mode , uint16 prescalar) {
 	if (ID == PWM1) {
+		PORTB_DIR |= (1<<3) ;
 		if (mode == NON_INVERTING_MODE) {		// fast pwm - non inverting mode
 			switch (prescalar) {
 				case 0 :
@@ -52,6 +53,7 @@ void pwm_init (uint8 ID , uint8 mode , uint16 prescalar) {
 			}
 	}
 	else if (ID == PWM2) {
+		 PORTD_DIR |= ( 1<< 7 ) ;
 		if (mode == NON_INVERTING_MODE) {		// fast pwm - non inverting mode
 			switch (prescalar) {
 				case 0 :

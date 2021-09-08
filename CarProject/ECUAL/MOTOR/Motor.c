@@ -23,14 +23,16 @@
 
 void Motor_init(ST_MOTORconfig_t config)
 {
-	if(config.PWM_ID = PWM1)
+	if(config.PWM_ID == PWM1)
 		pwm_init(PWM1,NON_INVERTING_MODE,PRESCALAR);
 		
-	if(config.PWM_ID = PWM2)
-	pwm_init(PWM2,NON_INVERTING_MODE,PRESCALAR);
+	if(config.PWM_ID == PWM2)
+		pwm_init(PWM2,NON_INVERTING_MODE,PRESCALAR);
 			
-	if (config.DIR_PIN <= 7 ){
-		DIO_SetPinDirection(config.DIR_PORT,config.DIR_PIN,OUTPUT);
+	if (config.DIR1_PIN <= 7 && config.DIR2_PIN <= 7 ){
+		DIO_SetPinDirection(config.DIR1_PORT,config.DIR1_PIN,OUTPUT);
+		DIO_SetPinDirection(config.DIR2_PORT,config.DIR2_PIN,OUTPUT);
+
 	}
 
 	
@@ -43,7 +45,9 @@ void Motor_init(ST_MOTORconfig_t config)
  */
 void Motor_moveForward(ST_MOTORconfig_t config,uint8 speed)
 {
-	DIO_SetPinValue(config.DIR_PORT,config.DIR_PIN,LOW);
+	DIO_SetPinValue(config.DIR1_PORT,config.DIR1_PIN,LOW);
+	DIO_SetPinValue(config.DIR2_PORT,config.DIR2_PIN,HIGH);
+
 	if (speed>=0 && speed <=100)
 		pwm_SetSpeed(config.PWM_ID,speed);
 }
@@ -57,7 +61,8 @@ void Motor_moveForward(ST_MOTORconfig_t config,uint8 speed)
 
 void Motor_moveBackwards(ST_MOTORconfig_t config,uint8 speed)
 {
-	DIO_SetPinValue(config.DIR_PORT,config.DIR_PIN,HIGH);
-	if (speed>=0 && speed <=100)
-		pwm_SetSpeed(config.PWM_ID,speed);
+		DIO_SetPinValue(config.DIR2_PORT,config.DIR2_PIN,LOW);
+		DIO_SetPinValue(config.DIR1_PORT,config.DIR1_PIN,HIGH);
+		if (speed>=0 && speed <=100)
+			pwm_SetSpeed(config.PWM_ID,speed);
 }

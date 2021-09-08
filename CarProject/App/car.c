@@ -5,15 +5,11 @@
  *  Author: Farouk
  */ 
 
-#include "..\MCAL\DIO\Std_Types.h"
-#include "..\MCAL\DIO\Bit_Math.h"
+#include "car.h"
 
-#include "..\ECUAL\BUTTON\Button.h"
-#include "..\ECUAL\Motor\Motor.h"
+ST_MOTORconfig_t MOTOR_1_config = {portA,0,portA,1,PWM1};
+ST_MOTORconfig_t MOTOR_2_config = {portA,2,portA,3,PWM2};
 
-
-ST_MOTORconfig_t MOTOR_1_config = {portA,0,PWM1};
-ST_MOTORconfig_t MOTOR_2_config = {portA,1,PWM2};
 
 void car_init(void)
 {
@@ -23,10 +19,10 @@ void car_init(void)
 	Motor_init(	MOTOR_2_config );
 	
 	/* init buttons */
-	Button_init(portC,0); // button 1 (forward)
-	Button_init(portC,1); // button 2 (backward)
-	Button_init(portC,2); // button 3 (right)
-	Button_init(portC,3); // button 4 (left)
+	Button_init(BUTTON_G); // button 1 (G -> speed and direction)
+	Button_init(BUTTON_M); // button 2 (MOVE)
+	Button_init(BUTTON_L); // button 3 (left)
+	Button_init(BUTTON_R); // button 4 (right)
 }
 
 
@@ -62,6 +58,11 @@ void car_moveBackward(void)
 
 void car_updateState(void)
 {
+	static uint8 speed = 0;
 	
-	
+	if (Button_read_one_press(BUTTON_G,PULLUP_RES) == HIGH){
+		speed +=10;
+		car_moveForward(speed);
+	}
+
 }

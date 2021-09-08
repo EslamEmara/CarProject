@@ -57,3 +57,33 @@ uint8 Button_read(uint8 port,uint8 pin,EN_CONN_t conn)
 
 
 }
+/*
+ *	Function to read the state of the button in one press
+ * INPUTS:uint8 Button port, uint8 Button Pin , EN_CONN_t connection type
+ * return the current value of the button one time only otherwise return 2
+ *EX:: if you want to increase variable one time in every press
+ *	while(1){
+		if(Button_read_one_press(portA,0,PULLUP_RES) == HIGH){
+			variable ++;
+		}
+	}
+ */
+
+uint8 Button_read_one_press(uint8 port,uint8 pin,EN_CONN_t conn)
+{
+	static uint8 current_value =0;
+	static uint8 last_value = 0;
+	static uint8 return_value = 0;
+	
+	current_value = Button_read(port,pin,conn);
+	
+	if (current_value!=last_value){
+		return_value = current_value;					/*return pressed value */
+	}
+	else return_value = 2;								/*return any other value*/
+	
+	last_value = current_value;							/*update variables*/
+	
+	return return_value;
+}
+
