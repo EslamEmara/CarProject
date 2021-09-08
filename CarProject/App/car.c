@@ -89,3 +89,26 @@ void car_updateState(void)
 		Car_movement  = STOP;
 	}
 }
+
+void app(){
+	car_updateState();
+	
+	if (Car_movement == FORWARD){
+		if (Current_state < 100){
+			car_moveForward(Current_state);
+		}
+		else if(Current_state > 100){
+			car_moveBackward();
+		}
+	}
+	else if (Car_movement == LEFT){
+		car_moveLeft(LR_SPEED);
+	}
+	else if (Car_movement == RIGHT){
+		car_moveRight(LR_SPEED);
+	}
+	else if(Car_movement == STOP){
+		car_moveForward(0);
+	}
+	
+}

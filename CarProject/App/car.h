@@ -34,6 +34,7 @@
 #define RIGHT		6
 #define LEFT		7
 
+#define LR_SPEED		30
 
  uint8 Current_state;
  uint8 Car_movement;
@@ -79,6 +80,7 @@ void car_moveBackward(void);
 /* OMAR */
 void car_updateState(void);
 
-void app();
+
+void app();				/* main app*/
 
 #endif /* CAR_H_ */
