@@ -6,7 +6,7 @@
  */ 
 
 #include "car.h"
-
+uint8 status_arr[4] = {F_30, F_60, F_90, B_30}; // defining 4 modes of care
 ST_MOTORconfig_t MOTOR_1_config = {portA,0,portA,1,PWM1};
 ST_MOTORconfig_t MOTOR_2_config = {portA,2,portA,3,PWM2};
 
@@ -58,11 +58,36 @@ void car_moveBackward(void)
 
 void car_updateState(void)
 {
-	static uint8 speed = 0;
-	
-	if (Button_read_one_press(BUTTON_G,PULLUP_RES) == HIGH){
-		speed +=10;
-		car_moveForward(speed);
+	static uint8* status_Ptr = status_arr;
+	if(Button_read_one_press(BUTTON_G,PULLUP_RES) == HIGH) // if G button is pressed
+	{
+		if( *status_Ptr == B_30)
+		{
+			status_Ptr = status_arr;  // reinitialize pointer position to the F_30
+			Current_state = *status_Ptr;
+		}
+		else
+		{
+			status_Ptr++;
+			Current_state = *status_Ptr;
+		}
 	}
-
+	else if(Button_read_one_press(BUTTON_M,PULLUP_RES) == HIGH) // if M button is pressed
+	{
+		Car_movement  = FORWARD;
+	}
+	else if(Button_read_one_press(BUTTON_R,PULLUP_RES) == HIGH) // if R button is pressed
+	{
+		Car_movement  = RIGHT;
+	}
+	else if(Button_read_one_press(BUTTON_L,PULLUP_RES) == HIGH) // if L button is pressed
+	{
+		Car_movement  = LEFT;
+	}
+	else
+	{
+		Car_movement  = STOP;
+	}
+	
+	
 }

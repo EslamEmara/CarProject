@@ -22,6 +22,21 @@
 #define BUTTON_L	portC,2
 #define BUTTON_R	portC,3
 
+// CAR STATUS
+#define F_30		1
+#define F_60		2
+#define F_90		3
+#define B_30		4
+
+// CAR MOTION
+#define STOP		0
+#define FORWARD		5
+#define RIGHT		6
+#define LEFT		7
+
+
+uint8 Current_state;
+uint8 Car_movement;
 
 
 /*******
