@@ -68,8 +68,8 @@ void car_updateState(void)
 		}
 		else
 		{
-			status_Ptr++;
 			Current_state = *status_Ptr;
+			status_Ptr++;
 		}
 	}
 	else if(Button_read(BUTTON_M,PULLUP_RES) == HIGH) // if M button is pressed
