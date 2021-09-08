@@ -88,6 +88,4 @@ void car_updateState(void)
 	{
 		Car_movement  = STOP;
 	}
-	
-	
 }
