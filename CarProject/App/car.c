@@ -6,7 +6,7 @@
  */ 
 
 #include "car.h"
-uint8 status_arr[4] = {F_30, F_60, F_90, B_30}; // defining 4 modes of care
+uint8 status_arr[4] = {F_30, F_60, F_90, B_30}; // defining 4 modes of car
 ST_MOTORconfig_t MOTOR_1_config = {portA,0,portA,1,PWM1};
 ST_MOTORconfig_t MOTOR_2_config = {portA,2,portA,3,PWM2};
 
@@ -14,9 +14,9 @@ ST_MOTORconfig_t MOTOR_2_config = {portA,2,portA,3,PWM2};
 void car_init(void)
 {
 	/* init motor1 */
-	Motor_init(	MOTOR_1_config );
+	Motor_init(MOTOR_1_config);
 	/* init motor2 */
-	Motor_init(	MOTOR_2_config );
+	Motor_init(MOTOR_2_config );
 	
 	/* init buttons */
 	Button_init(BUTTON_G); // button 1 (G -> speed and direction)
@@ -72,15 +72,15 @@ void car_updateState(void)
 			Current_state = *status_Ptr;
 		}
 	}
-	else if(Button_read_one_press(BUTTON_M,PULLUP_RES) == HIGH) // if M button is pressed
+	else if(Button_read(BUTTON_M,PULLUP_RES) == HIGH) // if M button is pressed
 	{
 		Car_movement  = FORWARD;
 	}
-	else if(Button_read_one_press(BUTTON_R,PULLUP_RES) == HIGH) // if R button is pressed
+	else if(Button_read(BUTTON_R,PULLUP_RES) == HIGH) // if R button is pressed
 	{
 		Car_movement  = RIGHT;
 	}
-	else if(Button_read_one_press(BUTTON_L,PULLUP_RES) == HIGH) // if L button is pressed
+	else if(Button_read(BUTTON_L,PULLUP_RES) == HIGH) // if L button is pressed
 	{
 		Car_movement  = LEFT;
 	}

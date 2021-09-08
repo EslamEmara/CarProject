@@ -10,7 +10,7 @@
 
 #include "..\..\MCAL\DIO\DIO_Config.h"
 
-#define	 DEBOUNCTING_TIME	 200
+//#define	 DEBOUNCTING_TIME	 50
 
 typedef enum {											/*connection type*/
 	PULLUP_RES,

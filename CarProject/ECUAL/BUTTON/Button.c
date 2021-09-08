@@ -29,32 +29,12 @@ void Button_init(uint8 port,uint8 pin)
  */
 uint8 Button_read(uint8 port,uint8 pin,EN_CONN_t conn)
 {
-	uint8 current_state =  0;
-	static uint8 last_state = 0;
-	static uint16 counter = 0;
-	static uint8 return_state = 0;
-
 	if (conn == PULLDOWN_RES){
-		current_state =DIO_GetPinValue(port,pin);
+		return DIO_GetPinValue(port,pin);
 	}
 	else{
-		current_state =!DIO_GetPinValue(port,pin);
+		return !DIO_GetPinValue(port,pin);
 	}
-
-	if (current_state == last_state){
-		counter++;
-	}
-
-	if (counter > DEBOUNCTING_TIME)
-	{
-		counter = 0;
-		return_state = current_state;
-	}
-
-	last_state = current_state;
-
-	return return_state;
-
 
 }
 /*
@@ -71,9 +51,9 @@ uint8 Button_read(uint8 port,uint8 pin,EN_CONN_t conn)
 
 uint8 Button_read_one_press(uint8 port,uint8 pin,EN_CONN_t conn)
 {
-	static uint8 current_value =0;
+	uint8 current_value =0;
 	static uint8 last_value = 0;
-	static uint8 return_value = 0;
+	uint8 return_value = 0;
 	
 	current_value = Button_read(port,pin,conn);
 	

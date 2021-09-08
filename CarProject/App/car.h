@@ -23,10 +23,10 @@
 #define BUTTON_R	portC,3
 
 // CAR STATUS
-#define F_30		1
-#define F_60		2
-#define F_90		3
-#define B_30		4
+#define F_30		30
+#define F_60		60
+#define F_90		90
+#define B_30		120
 
 // CAR MOTION
 #define STOP		0
@@ -35,8 +35,8 @@
 #define LEFT		7
 
 
-uint8 Current_state;
-uint8 Car_movement;
+ uint8 Current_state;
+ uint8 Car_movement;
 
 
 /*******
@@ -79,6 +79,6 @@ void car_moveBackward(void);
 /* OMAR */
 void car_updateState(void);
 
-
+void app();
 
 #endif /* CAR_H_ */
