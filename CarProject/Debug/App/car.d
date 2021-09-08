@@ -8,7 +8,7 @@ App/car.d App/car.o: ../App/car.c ../App/car.h \
  ../App/..\ECUAL\Motor\Motor.h \
  ../App/..\ECUAL\Motor\..\..\MCAL\DIO\DIO_Config.h \
  ../App/..\ECUAL\Motor\..\..\MCAL\PWM\pwm.h \
- d:\sprints\carproject\carproject\mcal\dio\std_types.h
+ ../App/..\ECUAL\Motor\..\..\MCAL\PWM\..\..\MCAL\DIO\Std_Types.h
 
 ../App/car.h:
 
@@ -32,4 +32,4 @@ App/car.d App/car.o: ../App/car.c ../App/car.h \
 
 ../App/..\ECUAL\Motor\..\..\MCAL\PWM\pwm.h:
 
-d:\sprints\carproject\carproject\mcal\dio\std_types.h:
+../App/..\ECUAL\Motor\..\..\MCAL\PWM\..\..\MCAL\DIO\Std_Types.h:

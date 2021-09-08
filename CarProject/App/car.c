@@ -63,8 +63,8 @@ void car_updateState(void)
 	{
 		if( *status_Ptr == B_30)
 		{
-			status_Ptr = status_arr;  // reinitialize pointer position to the F_30
 			Current_state = *status_Ptr;
+			status_Ptr = status_arr;  // reinitialize pointer position to the F_30
 		}
 		else
 		{
