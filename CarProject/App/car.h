@@ -77,7 +77,11 @@ void car_moveForward(uint8 speed);
 */
 void car_moveBackward(void);
 
-/* OMAR */
+/*******
+	Function Description: function updates the state of the car after each press of the button
+	parameter: none 
+	return: none
+*/
 void car_updateState(void);
 
 
